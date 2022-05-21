@@ -14,8 +14,8 @@ fs.readdir(filesPath, { withFileTypes: true }, (error, files) =>{
 					if (error) console.log(error);
 					const fileSize = ((stats.size)/1024).toFixed(3);
 					console.log(`${fileName} - ${fileExtension} - ${fileSize}kb`);
-				})
+				});
 			}
-		})
+		});
 	}
 });
