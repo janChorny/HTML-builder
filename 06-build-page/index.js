@@ -1,17 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const stylesFrom = path.join(__dirname, 'styles');
-const stylesTo = path.join(__dirname, 'project-dist', 'styles.css');
+const stylesTo = path.join(__dirname, 'project-dist', 'style.css');
 const copyFrom = path.join(__dirname, 'assets');
-const copyTo = path.join(__dirname, 'project-dist');
+const copyTo = path.join(__dirname, 'project-dist', 'assets');
 const htmlTemplate = 'template.html';
 const pathToTemplate = path.join(__dirname, htmlTemplate);
-const pathToHtml = path.join(copyTo, 'index.html');
+const pathToHtml = path.join(__dirname, 'project-dist', 'index.html');
 const pathToComponents = path.join(__dirname, 'components');
 
 
 //create dir
-fs.mkdir(copyTo, { recursive: true }, error => {
+fs.mkdir(path.join(__dirname, 'project-dist'), { recursive: true }, error => {
 		if (error) console.log(error);
  });
 
@@ -46,7 +46,7 @@ createFinalHtml();
 //copy directories
 function copyDir(copyFrom, copyTo) {
 	fs.mkdir(copyTo, { recursive: true }, error => {
-		if (error) console.log(error);
+	 	if (error) console.log(error);
 	});
 
 	fs.readdir(copyFrom, { withFileTypes: true }, (error, files) => {
